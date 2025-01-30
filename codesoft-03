@@ -1,0 +1,50 @@
+def display_tasks(tasks):
+    """Display the current tasks."""
+    if not tasks:
+        print("Your to-do list is empty.")
+    else:
+        print("Your tasks:")
+        for index, task in enumerate(tasks, start=1):
+            print(f"{index}. {task}")
+
+def main():
+    tasks = []
+    
+    while True:
+        print("\nTo-Do List Menu:")
+        print("1.add task")
+        print("2.view task")
+        print("3.delete task")
+        print("4.exit")
+        
+        choice = input("Choose an option (1-4): ")
+        
+        if choice == '1':
+            task = input("Enter the task: ")
+            tasks.append(task)
+            print(f"Task '{task}' added.")
+        
+        elif choice == '2':
+            display_tasks(tasks)
+        
+        elif choice == '3':
+            display_tasks(tasks)
+            try:
+                task_index = int(input("Enter task number to delete: ")) - 1
+                if 0 <= task_index < len(tasks):
+                    removed_task = tasks.pop(task_index)
+                    print(f"Task '{removed_task}' deleted.")
+                else:
+                    print("Invalid information given.")
+            except ValueError:
+                print("Please enter a valid number.")
+        
+        elif choice == '4':
+            print("getting out of the To-Do List application.")
+            break
+        
+        else:
+            print("enter a valid choice .")
+
+if __name__ == "__main__":
+    main()
